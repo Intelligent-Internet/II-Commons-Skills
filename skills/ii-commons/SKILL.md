@@ -8,14 +8,14 @@ description: Use II-Commons for deterministic search across arXiv, PubMed, and p
 Use this as the top-level router for II-Commons retrieval. The CLI can be run through npm:
 
 ```bash
-npx ii-commons --help
-npx ii-commons cutoff
+npx @intelligentinternet/ii-commons --help
+npx @intelligentinternet/ii-commons cutoff
 ```
 
 It can also be installed globally:
 
 ```bash
-npm install -g ii-commons
+npm install -g @intelligentinternet/ii-commons
 ii-commons cutoff
 ```
 
@@ -74,7 +74,9 @@ Runtime and service:
 
 ## Commands
 
-The examples below use the npm CLI. With `npx`, prefix the same commands with `npx`, for example `npx ii-commons cutoff`.
+The examples below use the npm CLI. With `npx`, prefix the same commands with
+`npx @intelligentinternet/ii-commons`, for example
+`npx @intelligentinternet/ii-commons cutoff`.
 
 For `search`, use exactly this shape: `search <corpus> <topic> [filters]`. Put the quoted topic immediately after the corpus, then append filters such as `--start`, `--end`, or `--max-results`.
 

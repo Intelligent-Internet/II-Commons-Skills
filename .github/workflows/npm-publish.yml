@@ -1,0 +1,96 @@
+name: Publish npm package
+
+on:
+  push:
+    branches:
+      - release
+    paths-ignore:
+      - '.github/**'
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump type
+        required: true
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+concurrency:
+  group: npm-publish-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.actor != 'github-actions[bot]' &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[ci skip]')
+      )
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      BUMP_TYPE: ${{ inputs.bump || 'patch' }}
+    steps:
+      - name: Check npm token
+        run: |
+          if [ -z "${NODE_AUTH_TOKEN}" ]; then
+              echo 'NPM_TOKEN repository secret is required.' >&2
+              exit 1
+          fi
+
+      - name: Check out release branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+              npm ci
+          else
+              npm install --package-lock=false --ignore-scripts
+          fi
+
+      - name: Test package
+        run: npm test
+
+      - name: Validate package contents
+        run: npm run pack:dry
+
+      - name: Configure release commit author
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email \
+              '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Bump package version
+        id: version
+        run: |
+          new_version="$(
+              npm version "${BUMP_TYPE}" \
+                  -m 'chore(release): bump to %s [skip ci]'
+          )"
+          echo "version=${new_version}" >> "${GITHUB_OUTPUT}"
+
+      - name: Publish to npm
+        run: npm publish --access public --provenance
+
+      - name: Push version bump and tag
+        run: |
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git push origin "${{ steps.version.outputs.version }}"
