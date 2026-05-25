@@ -1,5 +1,5 @@
 {
-  "name": "ii-commons",
+  "name": "@intelligentinternet/ii-commons",
   "version": "1.0.0",
   "description": "Fast, daily-updated skill and CLI for arXiv, PubMed, PMC, and US policy retrieval.",
   "license": "Apache-2.0",
@@ -10,6 +10,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Intelligent-Internet/II-Commons-Skills.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "keywords": [
     "arxiv",

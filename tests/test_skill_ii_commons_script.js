@@ -21,7 +21,11 @@ async function tempHome() {
 }
 
 test("npm package exposes the ii-commons CLI", async () => {
-  assert.equal(packageJson.name, "ii-commons");
+  assert.equal(packageJson.name, "@intelligentinternet/ii-commons");
+  assert.deepEqual(packageJson.publishConfig, {
+    access: "public",
+    registry: "https://registry.npmjs.org",
+  });
   assert.deepEqual(packageJson.bin, {
     "ii-commons": "skills/ii-commons/scripts/ii_commons.js",
   });

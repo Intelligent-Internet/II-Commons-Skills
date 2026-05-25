@@ -14,16 +14,18 @@ II-Commons-Skills provides fast, daily-updated deterministic retrieval across ar
 
 ## Install
 
+The npm package is published as `@intelligentinternet/ii-commons`.
+
 Run the CLI with npx:
 
 ```bash
-npx ii-commons cutoff
+npx @intelligentinternet/ii-commons cutoff
 ```
 
 Or install it globally:
 
 ```bash
-npm install -g ii-commons
+npm install -g @intelligentinternet/ii-commons
 ii-commons cutoff
 ```
 
