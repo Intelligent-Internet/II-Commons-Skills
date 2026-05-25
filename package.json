@@ -1,6 +1,6 @@
 {
   "name": "@intelligentinternet/ii-commons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fast, daily-updated skill and CLI for arXiv, PubMed, PMC, and US policy retrieval.",
   "license": "Apache-2.0",
   "homepage": "https://github.com/Intelligent-Internet/II-Commons-Skills#readme",
