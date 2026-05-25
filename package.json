@@ -1,0 +1,45 @@
+{
+  "name": "ii-commons",
+  "version": "1.0.0",
+  "description": "Fast, daily-updated skill and CLI for arXiv, PubMed, PMC, and US policy retrieval.",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/Intelligent-Internet/II-Commons-Skills#readme",
+  "bugs": {
+    "url": "https://github.com/Intelligent-Internet/II-Commons-Skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Intelligent-Internet/II-Commons-Skills.git"
+  },
+  "keywords": [
+    "arxiv",
+    "pubmed",
+    "pmc",
+    "policy",
+    "us-policy",
+    "retrieval",
+    "research",
+    "daily-updated",
+    "skill",
+    "cli"
+  ],
+  "bin": {
+    "ii-commons": "skills/ii-commons/scripts/ii_commons.js"
+  },
+  "main": "skills/ii-commons/scripts/ii_commons.js",
+  "files": [
+    "skills/ii-commons/SKILL.md",
+    "skills/ii-commons/agents/openai.yaml",
+    "skills/ii-commons/scripts/ii_commons.js",
+    "skills/ii-commons/references/api.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/test_skill_ii_commons_script.js",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
