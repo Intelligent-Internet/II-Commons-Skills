@@ -58,6 +58,12 @@ The CLI writes JSON to stdout. Errors are machine-readable JSON on stderr.
 
 Basic usage works without authentication. For higher usage limits, request an API token at https://commons.ii.inc/ and configure it with `II_COMMONS_API_KEY` or the local `ii-commons` config file.
 
+## Releases
+
+Pushes to the `release` branch run the npm publish workflow. The workflow tests
+the package, bumps the patch version by default, publishes to npm, and pushes
+the release tag back to the branch.
+
 ## License
 
 [Apache-2.0. ](LICENSE).
