@@ -4,6 +4,8 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Intelligent-Internet/II-Commons-Skills?style=social)](https://github.com/Intelligent-Internet/II-Commons-Skills)
 
+![II-Commons-Skills banner](github-commons-skill.png)
+
 II-Commons-Skills provides fast, daily-updated deterministic retrieval across arXiv, PubMed / PMC, and supported US policy corpora.
 
 ## Links
