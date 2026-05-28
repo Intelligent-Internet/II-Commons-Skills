@@ -14,7 +14,25 @@ II-Commons-Skills provides fast, daily-updated deterministic retrieval across ar
 - Source repository: https://github.com/Intelligent-Internet/II-Commons-Skills
 - Retrieval engine: [psql_bm25s](https://github.com/Intelligent-Internet/psql_bm25s), a PostgreSQL BM25S extension powering fast lexical retrieval.
 
-## Install
+## For Human: How to Use it
+
+Send this to your any agent:
+
+```txt
+Please add this skill for me:
+https://github.com/Intelligent-Internet/II-Commons-Skills.git
+And tell me what's the value of this skill.
+```
+
+After skill was installed, use it through your agent:
+
+```txt
+Please use the skill ii-commons to answer me: <your question or topoic>...
+```
+
+## For Agent: How to Use it
+
+### Install
 
 The npm package is published as `@intelligentinternet/ii-commons`.
 
@@ -39,7 +57,7 @@ To install as an agent skill, install the `skills/ii-commons/` folder as a skill
 node scripts/ii_commons.js --help
 ```
 
-## Usage
+### Usage
 
 For `search`, use exactly this shape: `search <corpus> <topic> [filters]`. Put the quoted topic immediately after the corpus, then append filters.
 
@@ -56,7 +74,7 @@ ii-commons markdown "PMCID:PMC11152602"
 
 The CLI writes JSON to stdout. Errors are machine-readable JSON on stderr.
 
-## Auth
+### Auth
 
 Basic usage works without authentication. For higher usage limits, request an API token at https://commons.ii.inc/ and configure it with `II_COMMONS_API_KEY` or the local `ii-commons` config file.
 
