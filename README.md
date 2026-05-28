@@ -14,23 +14,23 @@ II-Commons-Skills provides fast, daily-updated deterministic retrieval across ar
 - Source repository: https://github.com/Intelligent-Internet/II-Commons-Skills
 - Retrieval engine: [psql_bm25s](https://github.com/Intelligent-Internet/psql_bm25s), a PostgreSQL BM25S extension powering fast lexical retrieval.
 
-## For Human: How to Use it
+## For Humans: How to Use It
 
-Send this to your any agent:
+Send this to your agent:
 
 ```txt
 Please add this skill for me:
 https://github.com/Intelligent-Internet/II-Commons-Skills.git
-And tell me what's the value of this skill.
+And tell me the value of this skill.
 ```
 
-After skill was installed, use it through your agent:
+After the skill is installed, use it through your agent:
 
 ```txt
-Please use the skill ii-commons to answer me: <your question or topoic>...
+Please use the `ii-commons` skill to answer this: <your question or topic>...
 ```
 
-## For Agent: How to Use it
+## For Agents: How to Use It
 
 ### Install
 
