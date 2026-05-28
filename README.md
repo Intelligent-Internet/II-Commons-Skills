@@ -4,6 +4,8 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Intelligent-Internet/II-Commons-Skills?style=social)](https://github.com/Intelligent-Internet/II-Commons-Skills)
 
+![II-Commons-Skills banner](github-commons-skill.jpg)
+
 II-Commons-Skills provides fast, daily-updated deterministic retrieval across arXiv, PubMed / PMC, and supported US policy corpora.
 
 ## Links
@@ -12,7 +14,25 @@ II-Commons-Skills provides fast, daily-updated deterministic retrieval across ar
 - Source repository: https://github.com/Intelligent-Internet/II-Commons-Skills
 - Retrieval engine: [psql_bm25s](https://github.com/Intelligent-Internet/psql_bm25s), a PostgreSQL BM25S extension powering fast lexical retrieval.
 
-## Install
+## For Humans: How to Use It
+
+Send this to your agent:
+
+```txt
+Please add this skill for me:
+https://github.com/Intelligent-Internet/II-Commons-Skills.git
+And tell me the value of this skill.
+```
+
+After the skill is installed, use it through your agent:
+
+```txt
+Please use the `ii-commons` skill to answer this: <your question or topic>...
+```
+
+## For Agents: How to Use It
+
+### Install
 
 The npm package is published as `@intelligentinternet/ii-commons`.
 
@@ -37,7 +57,7 @@ To install as an agent skill, install the `skills/ii-commons/` folder as a skill
 node scripts/ii_commons.js --help
 ```
 
-## Usage
+### Usage
 
 For `search`, use exactly this shape: `search <corpus> <topic> [filters]`. Put the quoted topic immediately after the corpus, then append filters.
 
@@ -54,7 +74,7 @@ ii-commons markdown "PMCID:PMC11152602"
 
 The CLI writes JSON to stdout. Errors are machine-readable JSON on stderr.
 
-## Auth
+### Auth
 
 Basic usage works without authentication. For higher usage limits, request an API token at https://commons.ii.inc/ and configure it with `II_COMMONS_API_KEY` or the local `ii-commons` config file.
 
