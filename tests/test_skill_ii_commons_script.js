@@ -122,6 +122,33 @@ test("search payload for arxiv filters", () => {
   });
 });
 
+test("search payload for pubmed filters", () => {
+  const payload = buildSearchPayload({
+    corpus: "pubmed",
+    topic: "sleep duration",
+    maxResults: 5,
+    categories: "Review,Clinical Trial",
+    journals: "Sleep,Journal of Sleep Research",
+    start: 20240100,
+    end: 20250100,
+    noRefine: false,
+    noRerank: true,
+  });
+
+  assert.deepEqual(payload, {
+    topic: "sleep duration",
+    max_results: 5,
+    options: {
+      refine_query: true,
+      rerank: false,
+      categories: ["Review", "Clinical Trial"],
+      journal: ["Sleep", "Journal of Sleep Research"],
+      date_range_start: 20240100,
+      date_range_end: 20250100,
+    },
+  });
+});
+
 test("search posts expected request and returns success JSON metadata", async () => {
   const captured = {};
   const args = parseArgs([

@@ -5,31 +5,22 @@ description: Use II-Commons for deterministic search across arXiv, PubMed, and p
 
 # II-Commons
 
-Use this as the top-level router for II-Commons retrieval. The CLI can be run through npm:
+Use this as the top-level router for II-Commons retrieval. Use the installed `ii-commons` CLI for all retrieval commands:
 
 ```bash
-npx @intelligentinternet/ii-commons --help
-npx @intelligentinternet/ii-commons cutoff
+ii-commons --help
 ```
 
-It can also be installed globally:
+If `ii-commons` is not available on `PATH`, use the npm package without a global install:
 
 ```bash
-npm install -g @intelligentinternet/ii-commons
-ii-commons cutoff
-```
-
-When this skill is installed directly into an agent runtime, resolve the bundled client relative to this `SKILL.md` directory:
-
-```bash
-node scripts/ii_commons.js --help
+npx -y @intelligentinternet/ii-commons --help
 ```
 
 Runtime and service:
 
 - Requires Node.js 18 or newer.
 - Requires outbound network access to `commons.ii.inc`.
-- Source repository: https://github.com/Intelligent-Internet/II-Commons-Skills. Prefer the latest installed version from that repository.
 - Web app and API token requests: https://commons.ii.inc/
 - Basic usage works without authentication. For higher usage limits, help the user request an API token and configure it with `II_COMMONS_API_KEY` or the local `ii-commons` config file when asked.
 
@@ -74,8 +65,6 @@ Runtime and service:
 
 ## Commands
 
-The examples below use the npm CLI. With `npx`, prefix the same commands with `npx @intelligentinternet/ii-commons`, for example `npx @intelligentinternet/ii-commons cutoff`.
-
 For `search`, use exactly this shape: `search <corpus> <topic> [filters]`. Put the quoted topic immediately after the corpus, then append filters such as `--start`, `--end`, or `--max-results`.
 
 ```bash
@@ -89,8 +78,6 @@ ii-commons search policy "state overtime rule for agricultural workers" --max-re
 ii-commons meta "arXiv:2402.03578"
 ii-commons markdown "PMCID:PMC11152602"
 ```
-
-When running from an installed skill directory instead of npm, replace `ii-commons` with `node scripts/ii_commons.js`. From a repository checkout, use `node skills/ii-commons/scripts/ii_commons.js ...`.
 
 Default output is JSON on stdout. Errors are machine-readable JSON on stderr and return a non-zero exit code.
 

@@ -16,30 +16,24 @@ II-Commons-Skills provides fast, daily-updated deterministic retrieval across ar
 
 ## For Humans: How to Use It
 
-Send this to your agent:
+Send this to your agent to install and introduce the skill:
 
 ```txt
-Please add this skill for me:
-https://github.com/Intelligent-Internet/II-Commons-Skills.git
-And tell me the value of this skill.
-```
-
-After the skill is installed, use it through your agent:
-
-```txt
-Please use the `ii-commons` skill to answer this: <your question or topic>...
+Please install the `ii-commons` skill,
+briefly explain what it is useful for,
+and use it through the `ii-commons` CLI for retrieval.
 ```
 
 ## For Agents: How to Use It
 
 ### Install
 
-The npm package is published as `@intelligentinternet/ii-commons`.
+The npm package is published as `@intelligentinternet/ii-commons`. The installed command is `ii-commons`.
 
-Run the CLI with npx:
+Run the CLI with npx when you do not want a global install:
 
 ```bash
-npx @intelligentinternet/ii-commons cutoff
+npx -y @intelligentinternet/ii-commons cutoff
 ```
 
 Or install it globally:
@@ -51,11 +45,15 @@ ii-commons cutoff
 
 The CLI requires Node.js 18 or newer.
 
-To install as an agent skill, install the `skills/ii-commons/` folder as a skill named `ii-commons` in your agent runtime's native skill discovery path. If your runtime supports repository URL installs, point it at `skills/ii-commons/`.
+If the global install succeeds but `ii-commons` is not found, verify the npm global bin directory is on `PATH`:
 
 ```bash
-node scripts/ii_commons.js --help
+command -v ii-commons
+npm config get prefix
+export PATH="$(npm config get prefix)/bin:$PATH"
 ```
+
+To install as an agent skill, install the `skills/ii-commons/` folder as a skill named `ii-commons` in your agent runtime's native skill discovery path. The skill guide uses the CLI commands above for retrieval. If your runtime supports repository URL installs, point it at `skills/ii-commons/`.
 
 ### Usage
 
