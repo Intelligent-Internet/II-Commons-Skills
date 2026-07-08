@@ -1,8 +1,6 @@
 # II-Commons Agent REST Client Contract
 
-This skill bundles `scripts/ii_commons.js`, a dependency-free Node.js 18+ REST client for agent runtimes. Agent runtimes should call that script for II-Commons retrieval instead of reimplementing or wrapping these API endpoints.
-
-Source repository: https://github.com/Intelligent-Internet/II-Commons-Skills. Install and update the skill from the latest version of that repository.
+The `ii-commons` CLI is the supported command-line client for II-Commons retrieval. It ships as `@intelligentinternet/ii-commons` and uses a dependency-free Node.js 18+ REST client.
 
 ## Contents
 
@@ -32,7 +30,14 @@ Supported token configuration:
 
 ## Client Contract
 
-The bundled client exposes stable command names that map to the REST endpoints below. See `../SKILL.md` and the repository README for user-facing invocation examples.
+The CLI exposes stable command names that map to the REST endpoints below:
+
+```bash
+ii-commons search <corpus> <topic> --max-results N
+ii-commons meta <identifier>
+ii-commons markdown <identifier>
+ii-commons cutoff
+```
 
 For `search`, the client accepts a corpus, a topic, and optional filters, then translates them into the JSON request body shown below.
 

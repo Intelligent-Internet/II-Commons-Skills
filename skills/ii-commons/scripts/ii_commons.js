@@ -160,6 +160,22 @@ function parseCsv(value) {
   return items.length ? items : null;
 }
 
+function assignCsvOption(options, property, value) {
+  const items = parseCsv(value);
+  if (items) {
+    options[property] = items;
+  }
+}
+
+function assignDateRangeOptions(options, args) {
+  if (args.start !== undefined) {
+    options.date_range_start = args.start;
+  }
+  if (args.end !== undefined) {
+    options.date_range_end = args.end;
+  }
+}
+
 function buildSearchPayload(args) {
   const options = {
     refine_query: !args.noRefine,
@@ -167,40 +183,15 @@ function buildSearchPayload(args) {
   };
 
   if (args.corpus === "arxiv") {
-    const categories = parseCsv(args.categories);
-    const organizations = parseCsv(args.organizations);
-    if (categories) {
-      options.categories = categories;
-    }
-    if (organizations) {
-      options.organizations = organizations;
-    }
-    if (args.start !== undefined) {
-      options.date_range_start = args.start;
-    }
-    if (args.end !== undefined) {
-      options.date_range_end = args.end;
-    }
+    assignCsvOption(options, "categories", args.categories);
+    assignCsvOption(options, "organizations", args.organizations);
+    assignDateRangeOptions(options, args);
   } else if (args.corpus === "pubmed") {
-    const categories = parseCsv(args.categories);
-    const journals = parseCsv(args.journals);
-    if (categories) {
-      options.categories = categories;
-    }
-    if (journals) {
-      options.journal = journals;
-    }
-    if (args.start !== undefined) {
-      options.date_range_start = args.start;
-    }
-    if (args.end !== undefined) {
-      options.date_range_end = args.end;
-    }
+    assignCsvOption(options, "categories", args.categories);
+    assignCsvOption(options, "journal", args.journals);
+    assignDateRangeOptions(options, args);
   } else if (args.corpus === "policy") {
-    const jurisdictions = parseCsv(args.jurisdictions);
-    if (jurisdictions) {
-      options.jurisdictions = jurisdictions;
-    }
+    assignCsvOption(options, "jurisdictions", args.jurisdictions);
     if (args.snippetChars !== undefined) {
       options.snippet_chars = args.snippetChars;
     }

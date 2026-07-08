@@ -2,6 +2,6 @@ interface:
   display_name: "II-Commons"
   short_description: "Fast, daily-updated arXiv, PubMed, and US policy search"
   brand_color: "#0E7C66"
-  default_prompt: "Use $ii-commons to search arXiv, PubMed, or policy corpora through the bundled REST client. Use cutoff dates as the authoritative freshness signal for daily-updated corpus coverage, and fetch markdown when full-document analysis is needed."
+  default_prompt: "Use $ii-commons CLI commands to search arXiv, PubMed, or policy corpora. Use cutoff dates as the authoritative freshness signal for daily-updated corpus coverage, and fetch markdown when full-document analysis is needed."
 policy:
   allow_implicit_invocation: true
